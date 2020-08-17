@@ -12,7 +12,7 @@ defmodule Coxir.Stage.Middle do
   end
 
   def init(state) do
-    {:producer_consumer, state, subscribe_to: [Producer]}
+    {:producer_consumer, state, dispatcher: GenStage.BroadcastDispatcher, subscribe_to: [Producer]}
   end
 
   def handle_events(events, _from, state) do
